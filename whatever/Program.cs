@@ -87,6 +87,18 @@ namespace MotorVehicle1
                 }
                 return rv;
             }
+
+            public bool Correct(string action)
+            {
+                bool rv = false;
+
+                    if (Int32.Parse(action) >= 1930 && Int32.Parse(action) <= 2020)
+                    {
+                        _year = action;
+                        rv = true;
+                    }
+                return rv;
+            }
         }
 
 
@@ -102,19 +114,20 @@ namespace MotorVehicle1
 
             auto[0].Make = "Toyota";
             auto[0].Model = "Camry";
-            auto[0].Year = "2012";
 
             auto[1].Make = "Honda";
             auto[1].Model = "Civic";
-            auto[1].Year = "2015";
 
             auto[2].Make = "Mazda";
             auto[2].Model = "3";
-            auto[2].Year = "2017";
 
             auto[3].Make = "Subaru";
             auto[3].Model = "Legacy";
-            auto[3].Year = "2017";
+
+            auto[0].Correct("2012");
+            auto[1].Correct("2015");
+            auto[2].Correct("2017");
+            auto[3].Correct("1967");
 
             for (int i = 0; i < NUM_VEHICLES; i++)
             {
@@ -123,7 +136,7 @@ namespace MotorVehicle1
             auto[0].Ignition("On", "1234");
             auto[1].Ignition("On", "0000");
             auto[2].Ignition("On", "4321");
-            auto[1].Ignition("On", "0000");
+            auto[3].Ignition("On", "0000");
 
             Console.WriteLine("--------------");
             for (int i = 0; i < NUM_VEHICLES; i++)
@@ -134,7 +147,7 @@ namespace MotorVehicle1
             auto[0].Ignition("Off", "1234");
             auto[1].Ignition("Off", "0000");
             auto[2].Ignition("Off", "4321");
-            auto[1].Ignition("Off", "0000");
+            auto[3].Ignition("Off", "0000");
 
             Console.WriteLine("--------------");
             for (int i = 0; i < NUM_VEHICLES; i++)
