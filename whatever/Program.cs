@@ -60,26 +60,12 @@ namespace MotorVehicle1
                         return "Off";
                 }
             }
-
-            private bool _legacy;
-            public string Legacy
-            {
-                get
-                {
-                    if (_legacy)
-                        return "Yes";
-                    else
-                        return "No";
-                }
-            }
-
             public MotorVehicle()
             {
                 _model = "";
                 _make = "";
                 _year = "";
                 _engineOn = false;
-                _legacy = false;
             }
 
             public bool Ignition(string action, string key)
