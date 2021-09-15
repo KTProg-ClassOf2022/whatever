@@ -160,69 +160,215 @@ namespace MotorVehicle1
             }
         }
 
+        public class PickUpTruck:MotorVehicle
+        {
+
+            public string _cab;
+
+            public string Cab
+            {
+                get
+                {
+                    if (_cab == "Regular")
+                    {
+                        return "Regular";
+                    }
+                    if (_cab == "Extended")
+                    {
+                        return "Extended";
+                    }
+                    if (_cab == "Crew")
+                    {
+                        return "Crew";
+                    }
+                    else
+                    {
+                        return "Regular";
+                    }
+                }
+                set
+                {
+                    if (value != null)
+                    {
+                        _cab = value;
+                    }
+                }
+
+            }
+
+
+        }
+
+        public class Car:MotorVehicle
+        {
+            public string _type;
+
+            public string Type
+            {
+                get
+                {
+                    if (_type == "Sedan")
+                    {
+                        return "Sedan";
+                    }
+                    if (_type == "Coupe")
+                    {
+                        return "Coupe";
+                    }
+                    if (_type == "Hatchback")
+                    {
+                        return "Hatchback";
+                    }
+                    else
+                    {
+                        return "Sedan";
+                    }
+                }
+                set
+                {
+                    if (value != null)
+                    {
+                        _type = value;
+                    }
+                }
+
+            }
+
+
+        }
+
 
         static void Main(string[] args)
         {
             const int NUM_VEHICLES = 5;
-            MotorVehicle[] auto = new MotorVehicle[NUM_VEHICLES];
+            Car[] car = new Car[NUM_VEHICLES];
 
             for (int i = 0; i < NUM_VEHICLES; i++)
             {
-                auto[i] = new MotorVehicle();
+                car[i] = new Car();
             }
 
-            auto[0].Make = "Toyota";
-            auto[0].Model = "Camry";
-            auto[0].Year = "2012";
-            auto[0].Transmission = "Default";
+            car[0].Make = "Toyota";
+            car[0].Model = "Camry";
+            car[0].Year = "2012";
+            car[0].Transmission = "Default";
+            car[0].Type = "Sedan";
 
-            auto[1].Make = "Honda";
-            auto[1].Model = "Civic";
-            auto[1].Year = "2015";
-            auto[1].Transmission = "Default";
+            car[1].Make = "Honda";
+            car[1].Model = "Civic";
+            car[1].Year = "2015";
+            car[1].Transmission = "Default";
+            car[1].Type = "Coupe";
 
-            auto[2].Make = "Mazda";
-            auto[2].Model = "3";
-            auto[2].Year = "2017";
-            auto[2].Transmission = "Stick";
+            car[2].Make = "Mazda";
+            car[2].Model = "3";
+            car[2].Year = "2017";
+            car[2].Transmission = "Stick";
+            car[2].Type = "Hatchback";
 
-            auto[3].Make = "Subaru";
-            auto[3].Model = "Legacy";
-            auto[3].Year = "1967";
-            auto[3].Transmission = "Hybrid";
+            car[3].Make = "Subaru";
+            car[3].Model = "Legacy";
+            car[3].Year = "1967";
+            car[3].Transmission = "Hybrid";
+            car[3].Type = "Sedan";
 
-            auto[4].Make = "Ford";
-            auto[4].Model = "Mustang";
-            auto[4].Year = "Default";
-            auto[4].Transmission = "Stick";
+            car[4].Make = "Ford";
+            car[4].Model = "Mustang";
+            car[4].Year = "Default";
+            car[4].Transmission = "Stick";
+            car[4].Type = "Coupe";
 
             for (int i = 0; i < NUM_VEHICLES; i++)
             {
-                Console.WriteLine("{0} {1} {2} {3} {4}", auto[i].Year, auto[i].Make, auto[i].Model, auto[i].Engine, auto[i].Transmission);
+                Console.WriteLine("{0} {1} {2} {3} {4} {5}", car[i].Year, car[i].Make, car[i].Model,car[i].Type, car[i].Engine, car[i].Transmission);
             }
-            auto[0].Ignition("On", "1234");
-            auto[1].Ignition("On", "0000");
-            auto[2].Ignition("On", "4321");
-            auto[3].Ignition("On", "0000");
-            auto[4].Ignition("On", "1234");
+            car[0].Ignition("On", "1234");
+            car[1].Ignition("On", "0000");
+            car[2].Ignition("On", "4321");
+            car[3].Ignition("On", "0000");
+            car[4].Ignition("On", "1234");
+
+            PickUpTruck[] truck = new PickUpTruck[NUM_VEHICLES];
+
+            for (int i = 0; i < NUM_VEHICLES; i++)
+            {
+                truck[i] = new PickUpTruck();
+            }
+
+            truck[0].Make = "Ford";
+            truck[0].Model = "F250";
+            truck[0].Year = "2020";
+            truck[0].Transmission = "Default";
+            truck[0].Cab = "Crew";
+
+            truck[1].Make = "Dodge";
+            truck[1].Model = "3500";
+            truck[1].Year = "2010";
+            truck[1].Transmission = "Default";
+            truck[1].Cab = "Extended";
+
+            truck[2].Make = "Chevrolet";
+            truck[2].Model = "1500";
+            truck[2].Year = "1998";
+            truck[2].Transmission = "Default";
+            truck[2].Cab = "Regular";
+
+            truck[3].Make = "GMC";
+            truck[3].Model = "1500";
+            truck[3].Year = "2020";
+            truck[3].Transmission = "Default";
+            truck[3].Cab = "Crew";
+
+            truck[4].Make = "Ford";
+            truck[4].Model = "F150";
+            truck[4].Year = "2017";
+            truck[4].Transmission = "Hybrid";
+            truck[4].Cab = "Extended";
+
+            for (int i = 0; i < NUM_VEHICLES; i++)
+            {
+                Console.WriteLine("{0} {1} {2} {3} {4} {5}", truck[i].Year, truck[i].Make, truck[i].Model, truck[i].Cab, truck[i].Engine, truck[i].Transmission);
+            }
+            truck[0].Ignition("On", "1234");
+            truck[1].Ignition("On", "0000");
+            truck[2].Ignition("On", "4321");
+            truck[3].Ignition("On", "0000");
+            truck[4].Ignition("On", "1234");
+
 
             Console.WriteLine("--------------");
             for (int i = 0; i < NUM_VEHICLES; i++)
             {
-                Console.WriteLine("{0} {1} {2}", auto[i].Make, auto[i].Model, auto[i].Engine);
+                Console.WriteLine("{0} {1} {2}", car[i].Make, car[i].Model, car[i].Engine);
             }
 
-            auto[0].Ignition("Off", "1234");
-            auto[1].Ignition("Off", "0000");
-            auto[2].Ignition("Off", "4321");
-            auto[3].Ignition("Off", "0000");
-            auto[4].Ignition("Off", "1234");
+            car[0].Ignition("Off", "1234");
+            car[1].Ignition("Off", "0000");
+            car[2].Ignition("Off", "4321");
+            car[3].Ignition("Off", "0000");
+            car[4].Ignition("Off", "1234");
+
+            for (int i = 0; i < NUM_VEHICLES; i++)
+            {
+                Console.WriteLine("{0} {1} {2}", truck[i].Make, truck[i].Model, truck[i].Engine);
+            }
+
+            truck[0].Ignition("Off", "1234");
+            truck[1].Ignition("Off", "0000");
+            truck[2].Ignition("Off", "4321");
+            truck[3].Ignition("Off", "0000");
+            truck[4].Ignition("Off", "1234");
 
             Console.WriteLine("--------------");
             for (int i = 0; i < NUM_VEHICLES; i++)
             {
-                Console.WriteLine("{0} {1} {2}", auto[i].Make, auto[i].Model, auto[i].Engine);
+                Console.WriteLine("{0} {1} {2}", car[i].Make, car[i].Model, car[i].Engine);
             }
+            for (int i = 0; i < NUM_VEHICLES; i++)
+            {
+                Console.WriteLine("{0} {1} {2}", truck[i].Make, truck[i].Model, truck[i].Engine);
+            }
+
 
             Console.ReadLine();
         }
