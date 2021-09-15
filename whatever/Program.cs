@@ -183,14 +183,26 @@ namespace MotorVehicle1
                     }
                     else
                     {
-                        return "Regular";
+                        return "null";
                     }
                 }
                 set
                 {
-                    if (value != null)
+                    if(value == "Regular")
                     {
-                        _cab = value;
+                        value = "Regular";
+                    }
+                    if (value == "Extended")
+                    {
+                        value = "Extended";
+                    }
+                    if (value == "Crew")
+                    {
+                        value = "Crew";
+                    }
+                    else
+                    {
+                        value = "null";
                     }
                 }
 
@@ -221,14 +233,26 @@ namespace MotorVehicle1
                     }
                     else
                     {
-                        return "Sedan";
+                        return "null";
                     }
                 }
                 set
                 {
-                    if (value != null)
+                    if (value == "Regular")
                     {
-                        _type = value;
+                        value = "Regular";
+                    }
+                    if (value == "Extended")
+                    {
+                        value = "Extended";
+                    }
+                    if (value == "Crew")
+                    {
+                        value = "Crew";
+                    }
+                    else
+                    {
+                        value = "null";
                     }
                 }
 
