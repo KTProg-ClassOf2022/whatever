@@ -143,6 +143,7 @@ namespace MotorVehicle1
             {
                 bool rv = false;
 
+
                 if (string.Compare(key, "1234") == 0)
                 {
                     if (string.Compare(action, "On") == 0)
@@ -158,10 +159,83 @@ namespace MotorVehicle1
                 }
                 return rv;
             }
+
+            public bool Ignition(int backdoor, string action, string key)
+            {
+
+                bool rv = false;
+
+                if (backdoor == 1)
+                {
+                    if (string.Compare(key, "1234") == 0)
+                    {
+                        if (string.Compare(action, "On") == 0)
+                        {
+                            _engineOn = true;
+                            rv = true;
+                        }
+                        else if (string.Compare(action, "Off") == 0)
+                        {
+                            _engineOn = false;
+                            rv = true;
+                        }
+                    }
+                }
+                else
+                {
+                    rv = true;
+                }
+                return rv;
+            }
+
+
         }
 
-        public class PickUpTruck:MotorVehicle
+        public class PickUpTruck : MotorVehicle
         {
+            new private enum TransType
+            {
+                Automatic,
+                Manual,
+            }
+
+            private TransType _transmission;
+            new private string Transmission
+                {
+                get
+                {
+                    if (_transmission == TransType.Automatic)
+                    {
+                        return "Automatic";
+                    }
+                    if (_transmission == TransType.Manual)
+                    {
+                        return "Stick";
+                    }
+                    else
+                    {
+                        return "Automatic";
+                    }
+                }
+                set
+                {
+                    if (value != "Default")
+                    {
+                        if (value == "Automatic")
+                        {
+                            _transmission = TransType.Automatic;
+                        }
+                        if (value == "Stick")
+                        {
+                            _transmission = TransType.Manual;
+                        }
+                    }
+                    else
+                    {
+                        _transmission = TransType.Automatic;
+                    }
+                }
+            }
 
             public string _cab;
 
@@ -188,28 +262,29 @@ namespace MotorVehicle1
                 }
                 set
                 {
-                    if(value == "Regular")
+                    if (string.Compare(value, "Regular") == 0)
                     {
-                        value = "Regular";
+                        _cab = "Regular";
                     }
-                    if (value == "Extended")
+                    else if (string.Compare(value, "Extended") == 0)
                     {
-                        value = "Extended";
+                        _cab = "Extended";
                     }
-                    if (value == "Crew")
+                    else if (string.Compare(value, "Crew") == 0)
                     {
-                        value = "Crew";
+                        _cab = "Crew";
                     }
                     else
                     {
-                        value = "null";
+                        _cab = "null";
                     }
                 }
 
             }
 
-
         }
+
+
 
         public class Car:MotorVehicle
         {
@@ -238,22 +313,23 @@ namespace MotorVehicle1
                 }
                 set
                 {
-                    if (value == "Regular")
+                    if (string.Compare(value, "Sedan") == 0)
                     {
-                        value = "Regular";
+                        _type = "Sedan";
                     }
-                    if (value == "Extended")
+                    else if (string.Compare(value, "Coupe") == 0)
                     {
-                        value = "Extended";
+                        _type = "Coupe";
                     }
-                    if (value == "Crew")
+                    else if (string.Compare(value, "Hatchback") == 0)
                     {
-                        value = "Crew";
+                        _type = "Hatchback";
                     }
                     else
                     {
-                        value = "null";
+                        _type = "null";
                     }
+
                 }
 
             }
@@ -304,11 +380,11 @@ namespace MotorVehicle1
 
             for (int i = 0; i < NUM_VEHICLES; i++)
             {
-                Console.WriteLine("{0} {1} {2} {3} {4} {5}", car[i].Year, car[i].Make, car[i].Model,car[i].Type, car[i].Engine, car[i].Transmission);
+                Console.WriteLine("{0} {1} {2} {3} {4} {5}", car[i].Year, car[i].Make, car[i].Model, car[i].Type, car[i].Engine, car[i].Transmission);
             }
             car[0].Ignition("On", "1234");
             car[1].Ignition("On", "0000");
-            car[2].Ignition("On", "4321");
+            car[2].Ignition(1, "On", "4321");
             car[3].Ignition("On", "0000");
             car[4].Ignition("On", "1234");
 
@@ -357,7 +433,7 @@ namespace MotorVehicle1
             truck[1].Ignition("On", "0000");
             truck[2].Ignition("On", "4321");
             truck[3].Ignition("On", "0000");
-            truck[4].Ignition("On", "1234");
+            truck[4].Ignition(0, "On", "1234");
 
 
             Console.WriteLine("--------------");
